@@ -1,17 +1,16 @@
-DROP TABLE IF EXISTS 'modules';
+DROP TABLE IF EXISTS `modules`;
+CREATE TABLE `modules` (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE 'modules' (
-  'id' int AUTO_INCREMENT,
-  'name' varchar(255) NOT NULL,
-  PRIMARY KEY ('id')
-)
-
-LOCK TABLES 'modules' WRITE;
-
-INSERT INTO 'modules' VALUES ('Docker');
-INSERT INTO 'modules' VALUES ('Fundamentos de Arquitetura de Software');
-INSERT INTO 'modules' VALUES ('Comunicação');
-INSERT INTO 'modules' VALUES ('RabbitMQ');
-INSERT INTO 'modules' VALUES ('Autenticação e Keycloak');
+LOCK TABLES `modules` WRITE;
+INSERT INTO `modules`(name)
+VALUES  ('Docker'),
+        ('Fundamentos de Arquitetura de Software'),
+        ('Comunicação'),
+        ('RabbitMQ'),
+        ('Autenticação e Keycloak');
 
 UNLOCK TABLES;
