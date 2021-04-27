@@ -1,6 +1,7 @@
 Hi! Welcome to PFA Docker.
 
-This project is just for studying purposes using Docker (not docker-compose) and is composed of some sub projects:
+This project is just for studying purposes using Docker (not docker-compose). Do not expect any coding best practices.
+The project is composed of some sub projects:
 - nginx
 - node
 - mysql
