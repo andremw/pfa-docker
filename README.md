@@ -6,7 +6,9 @@ The project is composed of some sub projects:
 - node
 - mysql
 
-In order to run everything using docker, you will need to follow these steps:
+You can run the project using Docker Compose: `docker-compose up`.
+
+In order to run everything manually using docker, you will need to follow these steps:
 
 1. Create a network with `docker network create pfa-docker`
 2. Create a folder to store the data from MySQL with `mkdir pfa-data`

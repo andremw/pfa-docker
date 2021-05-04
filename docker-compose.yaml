@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: pfa-mysql
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql/dbdata:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - pfa-docker
+
+networks:
+  pfa-docker:
+    driver: bridge
