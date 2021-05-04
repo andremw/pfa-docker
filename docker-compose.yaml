@@ -16,6 +16,21 @@ services:
     networks:
       - pfa-docker
 
+  node:
+    build:
+      context: node
+    container_name: pfa-node
+    entrypoint: dockerize -wait tcp://pfa-mysql:3306 -timeout 30s node index.js
+    networks:
+      - pfa-docker
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+
 networks:
   pfa-docker:
     driver: bridge
