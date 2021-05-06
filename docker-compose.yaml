@@ -14,7 +14,7 @@ services:
       - MYSQL_DATABASE=test
       - MYSQL_ROOT_PASSWORD=password
     networks:
-      - pfa-docker
+      - pfa-docker-internal
 
   node:
     build:
@@ -22,7 +22,8 @@ services:
     container_name: pfa-node
     command: dockerize -wait tcp://pfa-mysql:3306 -timeout 30s node ./dist/index.js
     networks:
-      - pfa-docker
+      - pfa-docker-external
+      - pfa-docker-internal
     volumes:
       - /usr/src/app
     tty: true
@@ -35,11 +36,13 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
-      - pfa-docker
+      - pfa-docker-external
     ports:
       - 8000:80
     restart: always
 
 networks:
-  pfa-docker:
+  pfa-docker-internal:
+    driver: bridge
+  pfa-docker-external:
     driver: bridge
